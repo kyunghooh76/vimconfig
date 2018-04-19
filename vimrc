@@ -43,7 +43,8 @@ Bundle 'https://github.com/dhruvasagar/vim-table-mode.git'
 Bundle 'The-NERD-Commenter'
 Bundle 'AutoComplPop'
 "Bundle 'ShowMarks'
-Bundle 'mark'
+" Bundle 'mark'
+Bundle 'octol/vim-cpp-enhanced-highlight'
 
 "filetype plugin indent on     " required!
 
@@ -74,13 +75,20 @@ set printoptions=portrait:n,wrap:n,duplex:off
 set encoding=utf8
 set fileencodings=utf-8,euc-kr
 set gfn=나눔고딕코딩\ 12	" gvim용 폰트 설정
-colorscheme desert
 set virtualedit=all
 set mouse=a
 set backspace=indent,eol,start
+" set dir=~/.vim_tmp		" .swp file directory
+set nobackup
+set noswapfile
+
+colorscheme desert
+" colorscheme industry
+hi Search cterm=NONE ctermfg=grey ctermbg=blue
+hi PmenuSel cterm=NONE ctermfg=grey ctermbg=blue
 
 set cursorline
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+" set colorcolumn=100
 " hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 " nnoremap ,o :set cursorline! cursorcolumn!<CR>
 nnoremap ,l :set cursorline!<CR>
@@ -120,15 +128,43 @@ endif
 "====================================================
 "= gtags.vim 설정
 "====================================================
-nmap <C-F2> :copen<CR>
-nmap <C-F4> :cclose<CR>
-nmap <C-F5> :Gtags<SPACE>
-nmap <C-F6> :Gtags -f %<CR>
-nmap <C-F7> :GtagsCursor<CR>
-nmap <C-F8> :Gozilla<CR>
-nmap <C-n> :cn<CR>
-nmap <C-p> :cp<CR>
-nmap <C-\><C-]> :GtagsCursor<CR>
+let g:Gtags_No_Auto_Jump=1
+",gd 입력. 현재 cursor가 위치한 string을 tag에서 검색(definition등)
+nmap <Leader>gd :Gtags <C-R>=expand("<cword>")<CR><CR>
+",gr 입력. 현재 cursor가 위치한 string으로 reference검색.사용하는 곳의 위치를 보여줌.
+nmap <Leader>gr :Gtags -r <C-R>=expand("<cword>")<CR><CR>
+",gs 입력. 현재 cursor가 위치한 string으로 symbol 검색.(variable등)
+nmap <Leader>gs :Gtags -s <C-R>=expand("<cword>")<CR><CR>
+",gg 입력, --grep pattern 검색, 모든 파일에서 검색, (h, c, txt 등)
+nmap <Leader>gg :Gtags -go <C-R>=expand("<cword>")<CR><CR>
+",gp 입력, 파일명 검색
+nmap <Leader>gp :Gtags -Po <C-R>=expand("<cword>")<CR><CR>
+",ge 입력, --regexp 검색.
+nmap <Leader>ge :Gtags -ge <C-R>=expand("<cword>")<CR><CR>
+
+" 위의 사용법과 동일하며, case sensitivity를 ignore
+nmap <Leader>igd :Gtags -i <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>igr :Gtags -ir <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>igs :Gtags -is <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>igg :Gtags -igo <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>igp :Gtags -iPo <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>ige :Gtags -ige <C-R>=expand("<cword>")<CR><CR>
+
+"위의 사용법과 동일하며, 한가지 차이점은 위의 명령은 현재 커서 위치의 string으로 검색
+"아래 명령은 검색하려는 string을 직접 입력함
+nmap <Leader>ld :Gtags
+nmap <Leader>lr :Gtags -r
+nmap <Leader>ls :Gtags -s
+nmap <Leader>lg :Gtags -go
+nmap <Leader>lp :Gtags -Po
+nmap <Leader>le :Gtags -ge
+
+nmap <Leader>ild :Gtags -i
+nmap <Leader>ilr :Gtags -ir
+nmap <Leader>ils :Gtags -is
+nmap <Leader>ilg :Gtags -igo
+nmap <Leader>ilp :Gtags -iPo
+nmap <Leader>ile :Gtags -ige
 
 "====================================================
 "= 키맵핑
@@ -169,6 +205,8 @@ nmap <c-l> <c-w>l
 
 nmap <c-0> <c-w>v
 nmap <c-9> <c-w>s
+
+nmap <c-s> :w<CR>
 
 "===== 버퍼간 이동
 map ,x :bn!<CR>	  " Switch to Next File Buffer
@@ -314,7 +352,7 @@ set cscopequickfix=s-,c-,d-,i-,t-,e-
 "현재 디렉토리부터 root 디렉토리까지 tags를 찾는다.
 set tags=./tags,tags;$HOME/
 "set tags+=/data/mctm_build/hlos/apps_proc/poky/build/tmp-glibc/work/aarch64-poky-linux/dlt-daemon/2.15.0-r0/git/src/tags
-set tags+=/data/gitClone/genivi/dlt-daemon/tags
+set tags+=/data/gitClone/mctm/dlt-daemon/tags
 set tags+=/data/gitClone/luna-service2/tags
 set tags+=/data/gitClone/glib/tags
 set tags+=/data/gitClone/mctm/persistence-client-library/tags
