@@ -67,8 +67,8 @@ set noswapfile
 
 colorscheme desert
 " colorscheme industry
-hi Search cterm=NONE ctermfg=grey ctermbg=blue
-hi PmenuSel cterm=NONE ctermfg=grey ctermbg=blue
+hi Search cterm=NONE ctermfg=red ctermbg=yellow
+hi PmenuSel cterm=NONE ctermfg=black ctermbg=blue
 
 set cursorline
 " set colorcolumn=100
