@@ -26,10 +26,7 @@ Bundle 'jlanzarotta/bufexplorer'
 Bundle 'gtags.vim'
 Bundle 'octol/vim-cpp-enhanced-highlight'
 Bundle 'AutoComplPop'
-" Plugin 'fholgado/minibufexpl.vim'
-" Plugin 'Valloric/YouCompleteMe'
-Bundle 'Valloric/YouCompleteMe'
-" Bundle 'terryma/vim-multiple-cursors'
+" Bundle 'Valloric/YouCompleteMe'
 Bundle 'terryma/vim-smooth-scroll'
 
 filetype plugin indent on
@@ -71,6 +68,7 @@ hi Search cterm=NONE ctermfg=red ctermbg=yellow
 hi PmenuSel cterm=NONE ctermfg=black ctermbg=blue
 
 set cursorline
+" hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 " set colorcolumn=100
 " hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 " nnoremap ,o :set cursorline! cursorcolumn!<CR>
@@ -96,11 +94,11 @@ set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 "==========================
 "autocmd BufEnter *.c        setlocal ts=8 sw=8 sts=8 noexpandtab
 autocmd BufEnter *.S        setlocal ts=8 sw=8 sts=8 noexpandtab
-autocmd BufEnter *.py       setlocal ts=8 sw=8 sts=8 noexpandtab
+"autocmd BufEnter *.py       setlocal ts=8 sw=8 sts=8 noexpandtab
 autocmd BufEnter Makefile   setlocal ts=8 sw=8 sts=8 noexpandtab
 autocmd BufEnter .*         setlocal ts=8 sw=8 sts=8 noexpandtab nocindent
 autocmd BufEnter *.md       setlocal ts=8 sw=8 sts=8 noexpandtab nocindent
-autocmd BufEnter *.sh       setlocal ts=8 sw=8 sts=8 noexpandtab nocindent
+"autocmd BufEnter *.sh       setlocal ts=8 sw=8 sts=8 noexpandtab nocindent
 autocmd BufWritePre * :%s/\s\+$//e	" remove trailing whitespace
 
 if has("autocmd")
