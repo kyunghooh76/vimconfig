@@ -28,9 +28,10 @@ Bundle 'octol/vim-cpp-enhanced-highlight'
 Bundle 'AutoComplPop'
 " Plugin 'fholgado/minibufexpl.vim'
 " Plugin 'Valloric/YouCompleteMe'
-Bundle 'Valloric/YouCompleteMe'
+" Bundle 'Valloric/YouCompleteMe'
 " Bundle 'terryma/vim-multiple-cursors'
 Bundle 'terryma/vim-smooth-scroll'
+Bundle 'will133/vim-dirdiff'
 
 filetype plugin indent on
 
@@ -58,6 +59,8 @@ set backspace=indent,eol,start
 " set dir=~/.vim_tmp		" .swp file directory
 set nobackup
 set noswapfile
+set laststatus=2		" display filename
+set nowrapscan			" no loop back find
 
 "syntax enable
 "set background=dark
@@ -96,7 +99,7 @@ set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 "==========================
 "autocmd BufEnter *.c        setlocal ts=8 sw=8 sts=8 noexpandtab
 autocmd BufEnter *.S        setlocal ts=8 sw=8 sts=8 noexpandtab
-autocmd BufEnter *.py       setlocal ts=8 sw=8 sts=8 noexpandtab
+"autocmd BufEnter *.py       setlocal ts=8 sw=8 sts=8 noexpandtab
 autocmd BufEnter Makefile   setlocal ts=8 sw=8 sts=8 noexpandtab
 autocmd BufEnter .*         setlocal ts=8 sw=8 sts=8 noexpandtab nocindent
 autocmd BufEnter *.md       setlocal ts=8 sw=8 sts=8 noexpandtab nocindent
